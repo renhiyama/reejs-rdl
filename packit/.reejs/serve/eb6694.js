@@ -1,1 +1,1 @@
-import r from"../..//src/bot/register.js";export default function e(e){e.req.query("register")&&r()}
+import r from"../../src/bot/register.js";export default function e(e){e.req.query("register")&&r()}
