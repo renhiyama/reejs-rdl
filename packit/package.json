@@ -21,9 +21,6 @@
     "@twind/preset-autoprefix": "file:./.reejs/deps/@twind/preset-autoprefix",
     "discord-oauth2": "file:./.reejs/deps/discord-oauth2",
     "dotenv": "file:./.reejs/deps/dotenv",
-    "@discordjs/builders": "file:./.reejs/deps/@discordjs/builders",
-    "@discordjs/rest": "file:./.reejs/deps/@discordjs/rest",
-    "@remix-run/web-fetch": "file:./.reejs/deps/@remix-run/web-fetch",
     "discord-interactions": "file:./.reejs/deps/discord-interactions",
     "tweetnacl": "file:./.reejs/deps/tweetnacl"
   },

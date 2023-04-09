@@ -1,5 +1,3 @@
-// import "reejs/src/utils/log.js";
-
 import eureka, {run as eureka_run} from "./commands/eureka.js";
 import ping, {run as ping_run} from "./commands/ping.js";
 
