@@ -1,3 +1,3 @@
 /* esm.sh - tweetnacl@1.0.3 */
-export * from "./f788fb.js";
-export { default } from "./f788fb.js";
+export * from "./9bf740.js";
+export { default } from "./9bf740.js";

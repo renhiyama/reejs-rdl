@@ -1,3 +1,0 @@
-/* esm.sh - esbuild bundle(@remix-run/web-file@3.0.2) node production */
-import{Blob as e}from"./068ad4.js";var t=class extends e{constructor(i,s=n(new TypeError("File constructor requires name argument")),o={}){super(i,o),this._name=s,this._lastModified=o.lastModified||Date.now()}get name(){return this._name}get webkitRelativePath(){return""}get lastModified(){return this._lastModified}get[Symbol.toStringTag](){return"File"}},n=r=>{throw r};var f=t;export{e as Blob,f as File};
-//# sourceMappingURL=web-file.mjs.map
