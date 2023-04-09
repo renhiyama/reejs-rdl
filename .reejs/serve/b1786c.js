@@ -1,1 +1,1 @@
-import{defineConfig as r}from"../cache/b9d525.js";import t from"../cache/e4548e.js";import e from"../cache/f7fdbf.js";export default r({presets:[t,e],darkMode:"class"});
+import{defineConfig as r}from"https://cdn.jsdelivr.net/npm/@twind/core/+esm";import t from"https://cdn.jsdelivr.net/npm/@twind/preset-autoprefix/+esm";import e from"https://cdn.jsdelivr.net/npm/@twind/preset-tailwind/+esm";export default r({presets:[t,e],darkMode:"class"});
