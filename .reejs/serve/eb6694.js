@@ -1,1 +1,1 @@
-import r from"./3d460f.js";export default function e(e){e.req.query("register")&&r()}
+import r from"./src/pages/api/bot/register.js";export default function e(e){e.req.query("register")&&r()}
