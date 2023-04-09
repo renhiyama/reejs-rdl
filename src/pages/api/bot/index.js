@@ -2,7 +2,7 @@ import {
   InteractionResponseType,
   InteractionType,
 } from 'discord-interactions';
-import nacl from "tweetnacl";
+import nacl from "npm:tweetnacl";
 
 import {commands, runs} from '../../../bot/register.js';
 
