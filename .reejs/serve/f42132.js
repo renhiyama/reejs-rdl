@@ -1,1 +1,1 @@
-import t from"https://cdn.jsdelivr.net/npm/@twind/with-react/+esm";import i from"./twind.config.js";export default t(i);
+import t from"https://cdn.jsdelivr.net/npm/@twind/with-react/+esm";import i from"../..//twind.config.js";export default t(i);
