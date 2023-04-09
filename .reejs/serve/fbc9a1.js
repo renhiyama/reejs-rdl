@@ -1,1 +1,1 @@
-import e from"./node_modules/@reejs/react/app.jsx";export default e;
+import e from"../../node_modules/@reejs/react/app.jsx";export default e;
