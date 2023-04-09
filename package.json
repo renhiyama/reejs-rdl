@@ -7,22 +7,7 @@
     "reejs": "^0.9.0",
     "@reejs/imports": "^2.0.8",
     "@reejs/server": "^0.9.0",
-    "@reejs/react": "0.9.0",
-    "@hono/node-server": "file:./.reejs/deps/@hono/node-server",
-    "hono": "file:./.reejs/deps/hono",
-    "render": "file:./.reejs/deps/render",
-    "react": "file:./.reejs/deps/react",
-    "debug": "file:./.reejs/deps/debug",
-    "@hono/serve-static": "file:./.reejs/deps/@hono/serve-static",
-    "surrealdb.js": "file:./.reejs/deps/surrealdb.js",
-    "@twind/preset-tailwind": "file:./.reejs/deps/@twind/preset-tailwind",
-    "@twind/with-react": "file:./.reejs/deps/@twind/with-react",
-    "@twind/core": "file:./.reejs/deps/@twind/core",
-    "@twind/preset-autoprefix": "file:./.reejs/deps/@twind/preset-autoprefix",
-    "discord-oauth2": "file:./.reejs/deps/discord-oauth2",
-    "dotenv": "file:./.reejs/deps/dotenv",
-    "discord-interactions": "file:./.reejs/deps/discord-interactions",
-    "tweetnacl": "file:./.reejs/deps/tweetnacl"
+    "@reejs/react": "0.9.0"
   },
   "license": "MIT"
 }

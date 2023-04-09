@@ -1,3 +1,0 @@
-/* esm.sh - esbuild bundle(isomorphic-ws@5.0.0) deno production */
-var __global$ = globalThis || (typeof window !== "undefined" ? window : self);var e=null;typeof WebSocket<"u"?e=WebSocket:typeof MozWebSocket<"u"?e=MozWebSocket:typeof __global$<"u"?e=__global$.WebSocket||__global$.MozWebSocket:typeof document<"u"?e=window.WebSocket||window.MozWebSocket:typeof self<"u"&&(e=self.WebSocket||self.MozWebSocket);var o=e;export{o as default};
-//# sourceMappingURL=isomorphic-ws.mjs.map
