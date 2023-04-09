@@ -1,0 +1,6 @@
+{
+  "name": "@twind/with-react/inline",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module"
+}

@@ -1,0 +1,1 @@
+export default{name:"ping",type:1,description:"Ping the bot"};export async function run(n,t){return n.json({type:4,data:{tts:!1,content:"Congrats on sending your command!",flags:64}})}

@@ -1,0 +1,1 @@
+export default{name:"eureka",type:1,description:"POV: You got a eureka moment",options:[{name:"text",description:"The text to put in the eureka moment",type:3,required:!0}]};export async function run(e,t){return e.json({type:4,data:{content:`https://eureka.rocks/?text=${encodeURIComponent(t.data.options[0].value)}`}})}

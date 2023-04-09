@@ -1,0 +1,2 @@
+import React from "../cache/08fbb2.js";
+import e from"./a98e48.js";import t from"./5ec234.js";export default function l({children:l,className:r,style:a}){return React.createElement("html",null,React.createElement(e,null),React.createElement(t,{children:l,className:r,style:a}),React.createElement("script",{id:"__reejs"}))}

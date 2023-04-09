@@ -1,0 +1,2 @@
+import React from "../cache/08fbb2.js";
+export default function e({children:e}){return React.createElement("head",null,React.createElement("meta",{charset:"utf-8"}),React.createElement("meta",{name:"viewport",content:"width=device-width, initial-scale=1"}),e)}
