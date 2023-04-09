@@ -1,1 +1,1 @@
-import*as o from"../cache/undefined";o.config();import r from"../cache/undefined";import m from"../cache/undefined";
+import*as o from"https://esm.sh/dotenv@16.0.3?bundle";o.config();import r from"https://esm.sh/discord-oauth2@2.11.0?bundle";import m from"https://esm.sh/surrealdb.js@0.5.0?bundle";
