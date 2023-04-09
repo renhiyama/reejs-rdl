@@ -1,4 +1,4 @@
- function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 // Copyright Joyent, Inc. and Node.js contributors. All rights reserved. MIT license.
 
 import { notImplemented, warnNotImplemented } from "./_utils.ts";
@@ -46,20 +46,20 @@ import { processTicksAndRejections } from "./_next_tick.ts";
 
 // TODO(kt3k): Give better types to stdio objects
 // deno-lint-ignore no-explicit-any
-const stderr = stderr_ ;
+const stderr = stderr_ as any;
 // deno-lint-ignore no-explicit-any
-const stdin = stdin_ ;
+const stdin = stdin_ as any;
 // deno-lint-ignore no-explicit-any
-const stdout = stdout_ ;
+const stdout = stdout_ as any;
 export { stderr, stdin, stdout };
 import { getBinding } from "./internal_binding/mod.ts";
 import * as constants from "./internal_binding/constants.ts";
 import * as uv from "./internal_binding/uv.ts";
-
+import type { BindingName } from "./internal_binding/mod.ts";
 import { buildAllowedFlags } from "./internal/process/per_thread.mjs";
 
 // @ts-ignore Deno[Deno.internal] is used on purpose here
-const DenoCommand = _optionalChain([Deno, 'access', _2 => _2[Deno.internal], 'optionalAccess', _3 => _3.nodeUnstable, 'optionalAccess', _4 => _4.Command]) ||
+const DenoCommand = Deno[Deno.internal]?.nodeUnstable?.Command ||
   Deno.Command;
 
 const notImplementedEvents = [
@@ -87,7 +87,7 @@ Object.defineProperty(argv, "1", {
 });
 
 /** https://nodejs.org/api/process.html#process_process_exit_code */
-export const exit = (code) => {
+export const exit = (code?: number | string) => {
   if (code || code === 0) {
     if (typeof code === "string") {
       const parsedCode = parseInt(code);
@@ -109,8 +109,8 @@ export const exit = (code) => {
 };
 
 function addReadOnlyProcessAlias(
-  name,
-  option,
+  name: string,
+  option: string,
   enumerable = true,
 ) {
   const value = getOptionValue(option);
@@ -126,17 +126,17 @@ function addReadOnlyProcessAlias(
 }
 
 function createWarningObject(
-  warning,
-  type,
-  code,
+  warning: string,
+  type: string,
+  code?: string,
   // deno-lint-ignore ban-types
-  ctor,
-  detail,
-) {
+  ctor?: Function,
+  detail?: string,
+): Error {
   assert(typeof warning === "string");
 
   // deno-lint-ignore no-explicit-any
-  const warningErr = new Error(warning);
+  const warningErr: any = new Error(warning);
   warningErr.name = String(type || "Warning");
 
   if (code !== undefined) {
@@ -152,21 +152,21 @@ function createWarningObject(
   return warningErr;
 }
 
-function doEmitWarning(warning) {
+function doEmitWarning(warning: Error) {
   process.emit("warning", warning);
 }
 
 /** https://nodejs.org/api/process.html#process_process_emitwarning_warning_options */
 export function emitWarning(
-  warning,
-  type
-
-
-
-,
-  code,
+  warning: string | Error,
+  type:
+    // deno-lint-ignore ban-types
+    | { type: string; detail: string; code: string; ctor: Function }
+    | string
+    | null,
+  code?: string,
   // deno-lint-ignore ban-types
-  ctor,
+  ctor?: Function,
 ) {
   let detail;
 
@@ -197,19 +197,19 @@ export function emitWarning(
   }
 
   if (typeof warning === "string") {
-    warning = createWarningObject(warning, type , code, ctor, detail);
+    warning = createWarningObject(warning, type as string, code, ctor, detail);
   } else if (!(warning instanceof Error)) {
     throw new ERR_INVALID_ARG_TYPE("warning", ["Error", "string"], warning);
   }
 
   if (warning.name === "DeprecationWarning") {
     // deno-lint-ignore no-explicit-any
-    if ((process ).noDeprecation) {
+    if ((process as any).noDeprecation) {
       return;
     }
 
     // deno-lint-ignore no-explicit-any
-    if ((process ).throwDeprecation) {
+    if ((process as any).throwDeprecation) {
       // Delay throwing the error to guarantee that all former warnings were
       // properly logged.
       return process.nextTick(() => {
@@ -221,10 +221,10 @@ export function emitWarning(
   process.nextTick(doEmitWarning, warning);
 }
 
-export function hrtime(time) {
+export function hrtime(time?: [number, number]): [number, number] {
   const milli = performance.now();
   const sec = Math.floor(milli / 1000);
-  const nano = Math.floor(milli * 1000000 - sec * 1000000000);
+  const nano = Math.floor(milli * 1_000_000 - sec * 1_000_000_000);
   if (!time) {
     return [sec, nano];
   }
@@ -232,30 +232,30 @@ export function hrtime(time) {
   return [sec - prevSec, nano - prevNano];
 }
 
-hrtime.bigint = function () {
+hrtime.bigint = function (): BigInt {
   const [sec, nano] = hrtime();
   return BigInt(sec) * 1_000_000_000n + BigInt(nano);
 };
 
-export function memoryUsage()
-
-
-
-
-
- {
+export function memoryUsage(): {
+  rss: number;
+  heapTotal: number;
+  heapUsed: number;
+  external: number;
+  arrayBuffers: number;
+} {
   return {
     ...Deno.memoryUsage(),
     arrayBuffers: 0,
   };
 }
 
-memoryUsage.rss = function () {
+memoryUsage.rss = function (): number {
   return memoryUsage().rss;
 };
 
 // Returns a negative error code than can be recognized by errnoException
-function _kill(pid, sig) {
+function _kill(pid: number, sig: number): number {
   let errCode;
 
   if (sig === 0) {
@@ -283,7 +283,7 @@ function _kill(pid, sig) {
       errCode = uv.codeMap.get("EINVAL");
     } else {
       try {
-        Deno.kill(pid, maybeSignal[0] );
+        Deno.kill(pid, maybeSignal[0] as Deno.Signal);
       } catch (e) {
         if (e instanceof TypeError) {
           throw notImplemented(maybeSignal[0]);
@@ -301,7 +301,7 @@ function _kill(pid, sig) {
   }
 }
 
-export function kill(pid, sig = "SIGTERM") {
+export function kill(pid: number, sig: string | number = "SIGTERM") {
   if (pid != (pid | 0)) {
     throw new ERR_INVALID_ARG_TYPE("pid", "number", pid);
   }
@@ -326,7 +326,7 @@ export function kill(pid, sig = "SIGTERM") {
 }
 
 // deno-lint-ignore no-explicit-any
-function uncaughtExceptionHandler(err, origin) {
+function uncaughtExceptionHandler(err: any, origin: string) {
   // The origin parameter can be 'unhandledRejection' or 'uncaughtException'
   // depending on how the uncaught exception was created. In Node.js,
   // exceptions thrown from the top level of a CommonJS module are reported as
@@ -338,11 +338,11 @@ function uncaughtExceptionHandler(err, origin) {
   process.emit("uncaughtException", err, origin);
 }
 
-let execPath = null;
+let execPath: string | null = null;
 
 class Process extends EventEmitter {
   constructor() {
-    super();Process.prototype.__init.call(this);Process.prototype.__init2.call(this);Process.prototype.__init3.call(this);Process.prototype.__init4.call(this);Process.prototype.__init5.call(this);Process.prototype.__init6.call(this);Process.prototype.__init7.call(this);Process.prototype.__init8.call(this);Process.prototype.__init9.call(this);Process.prototype.__init10.call(this);Process.prototype.__init11.call(this);Process.prototype.__init12.call(this);Process.prototype.__init13.call(this);Process.prototype.__init14.call(this);Process.prototype.__init15.call(this);Process.prototype.__init16.call(this);Process.prototype.__init17.call(this);Process.prototype.__init18.call(this);Process.prototype.__init19.call(this);Process.prototype.__init20.call(this);Process.prototype.__init21.call(this);Process.prototype.__init22.call(this);Process.prototype.__init23.call(this);Process.prototype.__init24.call(this);Process.prototype.__init25.call(this);Process.prototype.__init26.call(this);Process.prototype.__init27.call(this);;
+    super();
 
     globalThis.addEventListener("unhandledrejection", (event) => {
       if (process.listenerCount("unhandledRejection") === 0) {
@@ -387,59 +387,59 @@ class Process extends EventEmitter {
   }
 
   /** https://nodejs.org/api/process.html#process_process_arch */
-  __init() {this.arch = arch}
+  arch = arch;
 
   /**
    * https://nodejs.org/api/process.html#process_process_argv
    * Read permissions are required in order to get the executable route
    */
-  __init2() {this.argv = argv}
+  argv = argv;
 
   /** https://nodejs.org/api/process.html#process_process_chdir_directory */
-  __init3() {this.chdir = chdir}
+  chdir = chdir;
 
   /** https://nodejs.org/api/process.html#processconfig */
-  __init4() {this.config = {
+  config = {
     target_defaults: {},
     variables: {},
-  }}
+  };
 
   /** https://nodejs.org/api/process.html#process_process_cwd */
-  __init5() {this.cwd = cwd}
+  cwd = cwd;
 
   /**
    * https://nodejs.org/api/process.html#process_process_env
    * Requires env permissions
    */
-  __init6() {this.env = env}
+  env = env;
 
   /** https://nodejs.org/api/process.html#process_process_execargv */
-  __init7() {this.execArgv = []}
+  execArgv: string[] = [];
 
   /** https://nodejs.org/api/process.html#process_process_exit_code */
-  __init8() {this.exit = exit}
+  exit = exit;
 
-  __init9() {this._exiting = _exiting}
+  _exiting = _exiting;
 
   /** https://nodejs.org/api/process.html#processexitcode_1 */
-  __init10() {this.exitCode = undefined}
+  exitCode: undefined | number = undefined;
 
   // Typed as any to avoid importing "module" module for types
   // deno-lint-ignore no-explicit-any
-  __init11() {this.mainModule = undefined}
+  mainModule: any = undefined;
 
   /** https://nodejs.org/api/process.html#process_process_nexttick_callback_args */
-  __init12() {this.nextTick = _nextTick}
+  nextTick = _nextTick;
 
   /** https://nodejs.org/api/process.html#process_process_events */
-  
-
-
-
-
-
+  override on(event: "exit", listener: (code: number) => void): this;
+  override on(
+    event: typeof notImplementedEvents[number],
+    // deno-lint-ignore ban-types
+    listener: Function,
+  ): this;
   // deno-lint-ignore no-explicit-any
-   on(event, listener) {
+  override on(event: string, listener: (...args: any[]) => void): this {
     if (notImplementedEvents.includes(event)) {
       warnNotImplemented(`process.on("${event}")`);
       super.on(event, listener);
@@ -449,7 +449,7 @@ class Process extends EventEmitter {
       } else if (event === "SIGTERM" && Deno.build.os === "windows") {
         // Ignores SIGTERM on windows.
       } else {
-        Deno.addSignalListener(event , listener);
+        Deno.addSignalListener(event as Deno.Signal, listener);
       }
     } else {
       super.on(event, listener);
@@ -458,14 +458,14 @@ class Process extends EventEmitter {
     return this;
   }
 
-  
-
-
-
-
-
+  override off(event: "exit", listener: (code: number) => void): this;
+  override off(
+    event: typeof notImplementedEvents[number],
+    // deno-lint-ignore ban-types
+    listener: Function,
+  ): this;
   // deno-lint-ignore no-explicit-any
-   off(event, listener) {
+  override off(event: string, listener: (...args: any[]) => void): this {
     if (notImplementedEvents.includes(event)) {
       warnNotImplemented(`process.off("${event}")`);
       super.off(event, listener);
@@ -475,7 +475,7 @@ class Process extends EventEmitter {
       } else if (event === "SIGTERM" && Deno.build.os === "windows") {
         // Ignores SIGTERM on windows.
       } else {
-        Deno.removeSignalListener(event , listener);
+        Deno.removeSignalListener(event as Deno.Signal, listener);
       }
     } else {
       super.off(event, listener);
@@ -485,12 +485,12 @@ class Process extends EventEmitter {
   }
 
   // deno-lint-ignore no-explicit-any
-   emit(event, ...args) {
+  override emit(event: string, ...args: any[]): boolean {
     if (event.startsWith("SIG")) {
       if (event === "SIGBREAK" && Deno.build.os !== "windows") {
         // Ignores SIGBREAK if the platform is not windows.
       } else {
-        Deno.kill(Deno.pid, event );
+        Deno.kill(Deno.pid, event as Deno.Signal);
       }
     } else {
       return super.emit(event, ...args);
@@ -499,20 +499,20 @@ class Process extends EventEmitter {
     return true;
   }
 
-  
-
-
-
-
-
-
-
-
-   prependListener(
-    event,
+  override prependListener(
+    event: "exit",
+    listener: (code: number) => void,
+  ): this;
+  override prependListener(
+    event: typeof notImplementedEvents[number],
+    // deno-lint-ignore ban-types
+    listener: Function,
+  ): this;
+  override prependListener(
+    event: string,
     // deno-lint-ignore no-explicit-any
-    listener,
-  ) {
+    listener: (...args: any[]) => void,
+  ): this {
     if (notImplementedEvents.includes(event)) {
       warnNotImplemented(`process.prependListener("${event}")`);
       super.prependListener(event, listener);
@@ -520,7 +520,7 @@ class Process extends EventEmitter {
       if (event === "SIGBREAK" && Deno.build.os !== "windows") {
         // Ignores SIGBREAK if the platform is not windows.
       } else {
-        Deno.addSignalListener(event , listener);
+        Deno.addSignalListener(event as Deno.Signal, listener);
       }
     } else {
       super.prependListener(event, listener);
@@ -530,22 +530,22 @@ class Process extends EventEmitter {
   }
 
   /** https://nodejs.org/api/process.html#process_process_pid */
-  __init13() {this.pid = pid}
+  pid = pid;
 
   /** https://nodejs.org/api/process.html#process_process_platform */
-  __init14() {this.platform = platform}
+  platform = platform;
 
-  
-
-
-
-
-
-   addListener(
-    event,
+  override addListener(event: "exit", listener: (code: number) => void): this;
+  override addListener(
+    event: typeof notImplementedEvents[number],
+    // deno-lint-ignore ban-types
+    listener: Function,
+  ): this;
+  override addListener(
+    event: string,
     // deno-lint-ignore no-explicit-any
-    listener,
-  ) {
+    listener: (...args: any[]) => void,
+  ): this {
     if (notImplementedEvents.includes(event)) {
       warnNotImplemented(`process.addListener("${event}")`);
     }
@@ -553,20 +553,20 @@ class Process extends EventEmitter {
     return this.on(event, listener);
   }
 
-  
-
-
-
-
-
-
-
-
-   removeListener(
-    event,
+  override removeListener(
+    event: "exit",
+    listener: (code: number) => void,
+  ): this;
+  override removeListener(
+    event: typeof notImplementedEvents[number],
+    // deno-lint-ignore ban-types
+    listener: Function,
+  ): this;
+  override removeListener(
+    event: string,
     // deno-lint-ignore no-explicit-any
-    listener,
-  ) {
+    listener: (...args: any[]) => void,
+  ): this {
     if (notImplementedEvents.includes(event)) {
       warnNotImplemented(`process.removeListener("${event}")`);
     }
@@ -587,39 +587,39 @@ class Process extends EventEmitter {
    * These times are relative to an arbitrary time in the past, and not related to the time of day and therefore not subject to clock drift. The primary use is for measuring performance between intervals.
    * https://nodejs.org/api/process.html#process_process_hrtime_time
    */
-  __init15() {this.hrtime = hrtime}
+  hrtime = hrtime;
 
   /**
    * @private
    *
    * NodeJS internal, use process.kill instead
    */
-  __init16() {this._kill = _kill}
+  _kill = _kill;
 
   /** https://nodejs.org/api/process.html#processkillpid-signal */
-  __init17() {this.kill = kill}
+  kill = kill;
 
-  __init18() {this.memoryUsage = memoryUsage}
+  memoryUsage = memoryUsage;
 
   /** https://nodejs.org/api/process.html#process_process_stderr */
-  __init19() {this.stderr = stderr}
+  stderr = stderr;
 
   /** https://nodejs.org/api/process.html#process_process_stdin */
-  __init20() {this.stdin = stdin}
+  stdin = stdin;
 
   /** https://nodejs.org/api/process.html#process_process_stdout */
-  __init21() {this.stdout = stdout}
+  stdout = stdout;
 
   /** https://nodejs.org/api/process.html#process_process_version */
-  __init22() {this.version = version}
+  version = version;
 
   /** https://nodejs.org/api/process.html#process_process_versions */
-  __init23() {this.versions = versions}
+  versions = versions;
 
   /** https://nodejs.org/api/process.html#process_process_emitwarning_warning_options */
-  __init24() {this.emitWarning = emitWarning}
+  emitWarning = emitWarning;
 
-  binding(name) {
+  binding(name: BindingName) {
     return getBinding(name);
   }
 
@@ -633,17 +633,17 @@ class Process extends EventEmitter {
   }
 
   /** This method is removed on Windows */
-   
-     gid();
+  getgid?(): number {
+    return Deno.gid()!;
   }
 
   /** This method is removed on Windows */
-   
-     uid();
+  getuid?(): number {
+    return Deno.uid()!;
   }
 
   // TODO(kt3k): Implement this when we added -e option to node compat mode
-  __init25() {this._eval = undefined}
+  _eval: string | undefined = undefined;
 
   /** https://nodejs.org/api/process.html#processexecpath */
   get execPath() {
@@ -654,7 +654,7 @@ class Process extends EventEmitter {
     return execPath;
   }
 
-  set execPath(path) {
+  set execPath(path: string) {
     execPath = path;
   }
 
@@ -670,10 +670,10 @@ class Process extends EventEmitter {
     return this.#allowedFlags;
   }
 
-  __init26() {this.features = { inspector: false }}
+  features = { inspector: false };
 
   // TODO(kt3k): Get the value from --no-deprecation flag.
-  __init27() {this.noDeprecation = false}
+  noDeprecation = false;
 }
 
 if (Deno.build.os === "windows") {
