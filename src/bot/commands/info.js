@@ -28,7 +28,7 @@ export async function run(c, msg) {
   }
   let embed = {
     title : data.username + "#" + data.discriminator,
-    color : "#5865F2",
+    color : 0x5865f2,
     thumbnail : {
       url : `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`,
     },
