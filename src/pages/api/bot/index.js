@@ -17,7 +17,7 @@ export default async function Route(c) {
         Buffer.from(process.env.DISCORD_PUBLIC_KEY, 'hex'));
     if (!valid) {
       c.status(401);
-      return c.send('invalid request signature');
+      return c.text('invalid request signature');
     }
     if (message.type === InteractionType.PING) {
       console.log("%c[DISCORD] %cReceived %cPING", "color: #5865f2",
@@ -46,7 +46,7 @@ export default async function Route(c) {
     }
   } catch (e) {
     c.status(401);
-    return c.send('invalid request signature');
+    return c.text('invalid request signature');
   }
 }
 
