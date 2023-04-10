@@ -5,9 +5,9 @@ export default {
   options:
       [
         {
-          name : "ID",
-          description : "The ID of the bot",
-          type : 3,
+          name : "bot",
+          description : "The bot whose you want to get",
+          type : 6,
           required : true,
         },
       ],
