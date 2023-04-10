@@ -24,7 +24,6 @@ export default async function unregisterCommands() {
                     command.name,
                 "color: #5865f2", "color: #ed4245;",
                 "color: #ed4245; font-weight: bold;");
-    console.log(await res.json());
   }
   let res2 =
       await fetch(`https://discord.com/api/v10/applications/${
@@ -52,6 +51,5 @@ export default async function unregisterCommands() {
                     command.name,
                 "color: #5865f2", "color: #ed4245;",
                 "color: #ed4245; font-weight: bold;");
-    console.log(await res.json());
   }
 }
