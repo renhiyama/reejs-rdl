@@ -11,6 +11,7 @@ export default async function Route(c) {
   try {
     const body = await c.req.text();
     const message = JSON.parse(body);
+    console.log(message);
     const signature = c.req.header('x-signature-ed25519') || '';
     const timestamp = c.req.header('x-signature-timestamp') || '';
     let valid = nacl.sign.detached.verify(
