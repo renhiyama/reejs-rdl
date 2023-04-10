@@ -16,7 +16,7 @@ export default async function Route(c) {
     const timestamp = c.req.header('x-signature-timestamp') || '';
     let valid = nacl.sign.detached.verify(
         Buffer.from(timestamp + body), Buffer.from(signature, 'hex'),
-        Buffer.from(Deno.env.DISCORD_PUBLIC_KEY, 'hex'));
+        Buffer.from(Deno.env.get("DISCORD_PUBLIC_KEY"), 'hex'));
     if (!valid) {
       console.log("Invalid signature");
       c.status(401);
