@@ -4,12 +4,22 @@ export default {
   description: "Ping the bot",
 };
 export async function run(c, msg) {
-  return c.json({
-    "type" : 4,
-    "data" : {
-      "tts" : false,
-      "content" : "Congrats on sending your command!",
-      flags : 64,
-    }
-  });
+  let data = {
+    type : 4,
+    data : {
+      content : "Pong!",
+    },
+  };
+  let r =
+      await fetch(`https://discord.com/api/v10/interactions/${msg.id}/${
+                      msg.token}/callback`,
+                  {
+                    method : "POST",
+                    headers : {
+                      "Content-Type" : "application/json",
+                      "Authorization" : `Bot ${Deno.env.get("DISCORD_TOKEN")}`,
+                    },
+                    body : JSON.stringify(data),
+                  });
+  return c.json(data);
 }

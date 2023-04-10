@@ -1,1 +1,1 @@
-export default{name:"ping",type:1,description:"Ping the bot"};export async function run(n,t){return n.json({type:4,data:{tts:!1,content:"Congrats on sending your command!",flags:64}})}
+export default{name:"ping",type:1,description:"Ping the bot"};export async function run(t,n){let e={type:4,data:{content:"Pong!"}};await fetch(`https://discord.com/api/v10/interactions/${n.id}/${n.token}/callback`,{method:"POST",headers:{"Content-Type":"application/json",Authorization:`Bot ${Deno.env.get("DISCORD_TOKEN")}`},body:JSON.stringify(e)});return t.json(e)}

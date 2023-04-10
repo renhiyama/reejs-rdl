@@ -17,7 +17,7 @@ import tw from "./.reejs/serve/f42132.js";
 		
 		import "./.reejs/serve/4ef0cb.js";
 import * as file_a0795a from "./.reejs/serve/a0795a.js";server.app[file_a0795a?.method?.toLowerCase() || "get"]("/api/bot/",file_a0795a.default);
-import * as file_eb6694 from "./.reejs/serve/eb6694.js";server.app[file_eb6694?.method?.toLowerCase() || "get"]("/api/bot/manage",file_eb6694.default);
+import * as file_b03eb1 from "./.reejs/serve/b03eb1.js";server.app[file_b03eb1?.method?.toLowerCase() || "get"]("/api/bot/register",file_b03eb1.default);
 
 
 		

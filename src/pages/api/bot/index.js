@@ -11,14 +11,12 @@ export default async function Route(c) {
   try {
     const body = await c.req.text();
     const message = JSON.parse(body);
-    console.log(message);
     const signature = c.req.header('x-signature-ed25519') || '';
     const timestamp = c.req.header('x-signature-timestamp') || '';
     let valid = nacl.sign.detached.verify(
         Buffer.from(timestamp + body), Buffer.from(signature, 'hex'),
         Buffer.from(Deno.env.get("DISCORD_PUBLIC_KEY"), 'hex'));
     if (!valid) {
-      console.log("Invalid signature");
       c.status(401);
       return c.text('invalid request signature');
     }
