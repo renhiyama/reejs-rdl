@@ -1,0 +1,1 @@
+export const method="POST";import o from"./d0be5d.js";export default async function t(o){try{let t=await o.req.body();JSON.parse(t)}catch(o){console.log(o)}}

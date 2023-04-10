@@ -1,7 +1,7 @@
 {
   "imports": {
     "hono": "https://esm.sh/hono@3.0.3?bundle",
-    "@hono/node-server": "https://esm.sh/@hono/node-server@0.3.0?bundle",
+    "@hono/node-server": "https://esm.sh/@hono/node-server@0.5.0?bundle",
     "react": "https://esm.sh/preact@10.13.2/compat",
     "render": "https://esm.sh/preact-render-to-string@6.0.2",
     "@hono/serve-static": "https://esm.sh/@hono/node-server@0.3.0/serve-static?bundle",
@@ -11,7 +11,6 @@
     "@twind/preset-tailwind": "https://cdn.jsdelivr.net/npm/@twind/preset-tailwind/+esm",
     "@twind/with-react": "https://cdn.jsdelivr.net/npm/@twind/with-react/+esm",
     "@twind/with-react/inline": "https://cdn.jsdelivr.net/npm/@twind/with-react/inline/+esm",
-    "surrealdb.js": "https://esm.sh/surrealdb.js@0.5.0?bundle",
     "discord-oauth2": "https://esm.sh/discord-oauth2@2.11.0?bundle",
     "dotenv": "https://esm.sh/dotenv@16.0.3?bundle",
     "discord-interactions": "https://esm.sh/discord-interactions@3.3.0?bundle",

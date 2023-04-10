@@ -28,6 +28,10 @@ export async function run(c, msg) {
   }
   let embed = {
     title : data.username + "#" + data.discriminator,
+    color : "#5865F2",
+    thumbnail : {
+      url : `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`,
+    },
     fields : [
       {
         name : "Prefix",
