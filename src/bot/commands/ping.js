@@ -1,13 +1,14 @@
 export default {
   name: "ping",
-  type: 4,
-  description: "Ping the bot",
+  type: 1,
+  description: "Ping me",
 };
 export async function run(c, msg) {
   let data = {
     type : 4,
     data : {
       content : "Pong!",
+      flags : 64,
     },
   };
   let r =
