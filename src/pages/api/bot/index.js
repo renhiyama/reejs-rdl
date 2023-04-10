@@ -2,6 +2,7 @@ import {
   InteractionResponseType,
   InteractionType,
 } from 'discord-interactions';
+import {Buffer} from "https://deno.land/std@0.182.0/io/buffer.ts";
 import nacl from "tweetnacl";
 
 import {commands, runs} from '../../../bot/register.js';
