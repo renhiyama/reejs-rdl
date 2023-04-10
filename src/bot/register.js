@@ -10,12 +10,12 @@ export default async function registerCommands() {
                 "color: #fee75c;font-weight: bold");
     let res =
         await fetch(`https://discord.com/api/v10/applications/${
-                        process.env.DISCORD_CLIENT_ID}/commands`,
+                        Deno.env.get("DISCORD_CLIENT_ID")}/commands`,
                     {
                       method : "POST",
                       headers : {
                         "Content-Type" : "application/json",
-                        Authorization : `Bot ${process.env.DISCORD_TOKEN}`,
+                        Authorization : `Bot ${Deno.env.get("DISCORD_TOKEN")}`,
                       },
                       body : JSON.stringify(command),
                     });

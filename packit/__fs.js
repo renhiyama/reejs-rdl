@@ -1,1 +1,1 @@
-let __fs = {"pages":[["_app",".reejs/serve/fbc9a1.js"],["_twind",".reejs/serve/f42132.js"],["",".reejs/serve/f629bb.js"]],"components":[],"apis":[["_init",".reejs/serve/4ef0cb.js"],["bot/",".reejs/serve/a0795a.js"],["bot/register",".reejs/serve/b03eb1.js"]]};export default __fs;
+let __fs = {"pages":[["_app",".reejs/serve/fbc9a1.js"],["_twind",".reejs/serve/f42132.js"],["",".reejs/serve/f629bb.js"]],"components":[],"apis":[["_init",".reejs/serve/4ef0cb.js"],["bot/",".reejs/serve/a0795a.js"],["bot/manage",".reejs/serve/eb6694.js"]]};export default __fs;
