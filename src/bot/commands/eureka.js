@@ -16,8 +16,7 @@ export async function run(c, msg) {
   return c.json({
     type : 4,
     data : {
-      content : `https://eureka.rocks/?text=${
-          encodeURIComponent(msg.data.options[0].value)}`,
+      content : `POV: You got a eureka moment\n\n${msg.data.options[0].value}`,
     },
   });
 }
