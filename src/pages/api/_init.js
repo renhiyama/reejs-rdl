@@ -8,3 +8,4 @@ await db.signin({user : process.env.DB_USER, pass : process.env.DB_PASS});
 
 // Select a specific namespace / database
 await db.use("RDL", process.env.DB_NAME);*/
+console.log("Database connected!");
