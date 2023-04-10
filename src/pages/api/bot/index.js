@@ -2,7 +2,7 @@ import {
   InteractionResponseType,
   InteractionType,
 } from 'discord-interactions';
-import {Buffer} from "https://deno.land/std@0.182.0/io/buffer.ts";
+import {Buffer} from "https://deno.land/std@0.110.0/node/buffer.ts";
 import nacl from "tweetnacl";
 
 import {commands, runs} from '../../../bot/register.js';
@@ -15,8 +15,8 @@ export default async function Route(c) {
     const signature = c.req.header('x-signature-ed25519') || '';
     const timestamp = c.req.header('x-signature-timestamp') || '';
     let valid = nacl.sign.detached.verify(
-        new Buffer(timestamp + body), new Buffer(signature, 'hex'),
-        new Buffer(Deno.env.DISCORD_PUBLIC_KEY, 'hex'));
+        Buffer.from(timestamp + body), Buffer.from(signature, 'hex'),
+        Buffer.from(Deno.env.DISCORD_PUBLIC_KEY, 'hex'));
     if (!valid) {
       console.log("Invalid signature");
       c.status(401);
