@@ -21,5 +21,6 @@ export async function run(c, msg) {
                     },
                     body : JSON.stringify(data),
                   });
+  console.log(await r.text());
   return c.json(data);
 }
