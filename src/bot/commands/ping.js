@@ -1,6 +1,6 @@
 export default {
   name: "ping",
-  type: 1,
+  type: 4,
   description: "Ping the bot",
 };
 export async function run(c, msg) {
