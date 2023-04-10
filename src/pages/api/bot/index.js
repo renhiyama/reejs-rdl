@@ -17,6 +17,7 @@ export default async function Route(c) {
         Buffer.from(timestamp + body), Buffer.from(signature, 'hex'),
         Buffer.from(process.env.DISCORD_PUBLIC_KEY, 'hex'));
     if (!valid) {
+      console.log("Invalid signature");
       c.status(401);
       return c.text('invalid request signature');
     }
@@ -43,9 +44,10 @@ export default async function Route(c) {
       console.log(await r.json());
       return res;
     } else {
-      return c.json({msg : "Hello World!"});
+      return c.text('unknown interaction type');
     }
   } catch (e) {
+    console.log("invalid!!");
     c.status(401);
     return c.text('invalid request signature');
   }
