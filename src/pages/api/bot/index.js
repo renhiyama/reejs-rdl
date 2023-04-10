@@ -48,6 +48,7 @@ export default async function Route(c) {
     }
   } catch (e) {
     console.log("invalid!!");
+    console.log(e);
     c.status(401);
     return c.text('invalid request signature');
   }
