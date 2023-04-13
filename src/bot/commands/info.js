@@ -4,29 +4,32 @@ import Users from "../../db/models/users";
 export default {
   name: "info",
   description: "Get info from RDL",
+  type: 4,
   options:
       [
         {
           name : "bot",
           description : "Get info about bot",
-          type : 2,
+          type : 1,
           options : [
             {
               name : "ID",
               description : "The bot's ID",
               type : 6,
+              required : true,
             },
           ],
         },
         {
           name : "user",
           description : "Get info about user",
-          type : 2,
+          type : 1,
           options : [
             {
               name : "ID",
               description : "The user's ID",
               type : 6,
+              required : true,
             },
           ],
         }
