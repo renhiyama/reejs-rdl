@@ -9,4 +9,4 @@ await mongoose.connect(Deno.env.get("DB_URL"));
 console.log("%c[DB] Connected to Database: " + mongoose.connection.readyState,
             "color: #eb4590");
 
-export default {Bots, Servers, Users};
+export {Bots, Servers, Users};
