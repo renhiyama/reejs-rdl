@@ -61,6 +61,6 @@ Users.virtual("tag").get(
     function() { return `${this.username}#${this.discriminator}`; });
 
 console.log("%c[DB] %cCompiling Schema into Model - %cUsers", "color: #eb4590",
-            "color: white", "color: #57f287");
+            "", "color: #57f287");
 
 export default model("Users", Users);

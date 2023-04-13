@@ -75,6 +75,6 @@ Bots.virtual("mainowner").get(function() { return `${this.owners[0]}`; });
 Bots.virtual("timestamp").get(function() { return `${~~(this._id / 1000)}`; });
 
 console.log("%c[DB] %cCompiling Schema into Model - %cBots", "color: #eb4590",
-            "color: white", "color: #57f287");
+            "", "color: #57f287");
 
 export default model("Bots", Bots);
