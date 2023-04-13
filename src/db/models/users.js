@@ -1,4 +1,4 @@
-import {model, Schema} from 'npm:mongoose@7.0.3';
+import {model, Schema} from 'mongoose';
 
 const Users = new Schema({
   id : {type : String, unique : true, required : true},

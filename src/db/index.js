@@ -1,4 +1,4 @@
-import mongoose from "npm:mongoose@7.0.3";
+import mongoose from "mongoose";
 
 import Bots from "./models/bots";
 import Servers from "./models/servers";
