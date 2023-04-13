@@ -12,7 +12,7 @@ export default {
           type : 1,
           options : [
             {
-              name : "ID",
+              name : "id",
               description : "The bot's ID",
               type : 6,
               required : true,
@@ -25,7 +25,7 @@ export default {
           type : 1,
           options : [
             {
-              name : "ID",
+              name : "id",
               description : "The user's ID",
               type : 6,
               required : true,
