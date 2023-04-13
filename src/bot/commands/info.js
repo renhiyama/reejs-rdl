@@ -4,7 +4,6 @@ import Users from "../../db/models/users";
 export default {
   name: "info",
   description: "Get info from RDL",
-  type: 4,
   options:
       [
         {
