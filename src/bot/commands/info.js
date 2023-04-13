@@ -26,17 +26,16 @@ export default {
           options : [
             {
               name : "id",
-              description : "The user's ID",
+              description : "The user's ID (default: you)",
               type : 6,
-              required : true,
             },
           ],
         }
       ]
 };
 export async function run(c, msg) {
-  let type = msg.options[0].name;
-  let id = msg.options[0].options[0].value;
+  let type = msg.data.options[0].name;
+  let id = msg.data.options[0]?.options[0]?.value || msg.member.user.id;
   console.log(type, id);
   if (type == "bot") {
     let bot = await Bots.findOne({id});
