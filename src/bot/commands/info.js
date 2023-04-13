@@ -1,6 +1,4 @@
-import Bots from "../../db/models/bots";
-import Users from "../../db/models/users";
-
+import {Bots, Servers} from "../../db/index";
 export default {
   name: "info",
   description: "Get info from RDL",

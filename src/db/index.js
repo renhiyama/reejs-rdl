@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-import Bots from "./models/bots";
-import Servers from "./models/servers";
-import Users from "./models/users";
+import Bots from "./models/bots.js";
+import Servers from "./models/servers.js";
+import Users from "./models/users.js";
 
 console.log("Connecting to MongoDB...");
 await mongoose.connect(Deno.env.get("DB_URL"));
