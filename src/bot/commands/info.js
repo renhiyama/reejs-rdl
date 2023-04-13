@@ -37,8 +37,10 @@ export default {
 export async function run(c, msg) {
   let type = msg.options[0].name;
   let id = msg.options[0].options[0].value;
+  console.log(type, id);
   if (type == "bot") {
     let bot = await Bots.findOne({id});
+    console.log(bot);
     if (!bot) {
       return c.json({type : 4, data : {content : "Bot not found", flags : 64}});
     }
@@ -89,6 +91,8 @@ export async function run(c, msg) {
     let ownedBots = await Bots.find({owners : {$in : [ id ]}});
     let ownedBotsString =
         ownedBots.length ? ownedBots.map(bot => bot.tag).join(", ") : "No Bots";
+    console.log(user);
+    console.log(ownedBots);
     if (!user) {
       return c.json(
           {type : 4, data : {content : "User not found", flags : 64}});
