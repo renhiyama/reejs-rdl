@@ -15,7 +15,6 @@ export default {
               name : "ID",
               description : "The bot's ID",
               type : 6,
-              required : true
             },
           ],
         },
@@ -28,7 +27,6 @@ export default {
               name : "ID",
               description : "The user's ID",
               type : 6,
-              required : true
             },
           ],
         }
