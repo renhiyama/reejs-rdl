@@ -22,6 +22,6 @@ export default async function registerCommands() {
     console.log(
         `%c[DISCORD] %cSuccessfully registered command %c${command.name}`,
         "color: #5865f2", "color: #57f287", "color: #57f287;font-weight: bold");
-    console.log(await res.json());
+    console.log(JSON.stringify(await res.json()));
   }
 }
