@@ -15,12 +15,10 @@ import tw from "./.reejs/serve/f42132.js";
 							
 			
 		
-		import "./.reejs/serve/d0be5d.js";
-import * as file_a0795a from "./.reejs/serve/a0795a.js";server.app[file_a0795a?.method?.toLowerCase() || "get"]("/api/bot/",file_a0795a.default);
+		import * as file_a0795a from "./.reejs/serve/a0795a.js";server.app[file_a0795a?.method?.toLowerCase() || "get"]("/api/bot/",file_a0795a.default);
 import * as file_eb6694 from "./.reejs/serve/eb6694.js";server.app[file_eb6694?.method?.toLowerCase() || "get"]("/api/bot/manage",file_eb6694.default);
 import * as file_5a72b2 from "./.reejs/serve/5a72b2.js";server.app[file_5a72b2?.method?.toLowerCase() || "get"]("/api/bots/:id",file_5a72b2.default);
 import * as file_8dd1fd from "./.reejs/serve/8dd1fd.js";server.app[file_8dd1fd?.method?.toLowerCase() || "get"]("/api/bots/new",file_8dd1fd.default);
-import * as file_1ddfce from "./.reejs/serve/1ddfce.js";server.app[file_1ddfce?.method?.toLowerCase() || "get"]("/api/db/_bots",file_1ddfce.default);
 
 		
 	  

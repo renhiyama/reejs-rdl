@@ -1,9 +1,8 @@
-import eureka, {run as eureka_run} from "./commands/eureka.js";
 import info, {run as info_run} from "./commands/info.js";
 import ping, {run as ping_run} from "./commands/ping.js";
 
-export const commands = [ ping, eureka, info ];
-export const runs = [ ping_run, eureka_run, info_run ];
+export const commands = [ ping, info ];
+export const runs = [ ping_run, info_run ];
 export default async function registerCommands() {
   for (const command of commands) {
     console.log(`%c[DISCORD] %cRegistering command %c${command.name}`,
