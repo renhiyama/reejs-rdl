@@ -3,14 +3,13 @@ import Users from "../../db/models/users";
 
 export default {
   name: "info",
-  type: 1,
   description: "Get info from RDL",
   options:
       [
         {
           name : "bot",
           description : "Get info about bot",
-          type : 1,
+          type : 2,
           options : [
             {
               name : "ID",
@@ -23,7 +22,7 @@ export default {
         {
           name : "user",
           description : "Get info about user",
-          type : 1,
+          type : 2,
           options : [
             {
               name : "ID",
