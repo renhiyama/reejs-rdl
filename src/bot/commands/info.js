@@ -10,7 +10,7 @@ export default {
         {
           name : "bot",
           description : "Get info about bot",
-          type : 2,
+          type : 1,
           options : [
             {
               name : "ID",
@@ -23,7 +23,7 @@ export default {
         {
           name : "user",
           description : "Get info about user",
-          type : 2,
+          type : 1,
           options : [
             {
               name : "ID",
