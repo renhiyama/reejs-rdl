@@ -36,7 +36,6 @@ export default {
 export async function run(c, msg) {
   let type = msg.data.options[0].name;
   let id = msg.data.options[0]?.options[0]?.value || msg.member.user.id;
-  console.log(type, id);
   if (type == "bot") {
     let bot = await Bots.findOne({id});
     console.log(bot);
@@ -86,6 +85,7 @@ export async function run(c, msg) {
     });
 
   } else if (type == "user") {
+    console.log(Users);
     let user = await Users.findOne({id});
     let ownedBots = await Bots.find({owners : {$in : [ id ]}});
     let ownedBotsString =
