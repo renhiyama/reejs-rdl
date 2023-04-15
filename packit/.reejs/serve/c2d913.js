@@ -1,1 +1,1 @@
-import e from"https://deno.land/x/surrealdb/mod.ts";const t=new e(Deno.env.get("DB_URL"));await t.signin({user:Deno.env.get("DB_USER"),password:Deno.env.get("DB_PASSWORD")}),await t.use("test","test");export default t;
+import e from"https://deno.land/x/surrealdb/mod.ts";console.log(Deno.env.get("DB_URL"),Deno.env.get("DB_USER"),Deno.env.get("DB_PASSWORD"));const n=new e(Deno.env.get("DB_URL"));await n.signin({user:Deno.env.get("DB_USER"),password:Deno.env.get("DB_PASSWORD")}),await n.use("test","test");export default n;
