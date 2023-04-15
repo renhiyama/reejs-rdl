@@ -35,8 +35,8 @@ export async function run(c, msg) {
   let type = msg.data.options[0].name;
   let id = msg.data.options[0]?.options[0]?.value || msg.member.user.id;
   if (type == "bot") {
-    let bots = await db.select("bots");
-    let bot = bots.find(bot => bot.id.replace("bots","").slice(1,-1) == id);
+    let bots = await db.query(`SELECT * FROM bots WHERE botid = $id`, {id});
+    let bot = bots[0].result[0];
     console.log(bot);
     if (!bot) {
       return c.json({type : 4, data : {content : "Bot not found", flags : 64}});
