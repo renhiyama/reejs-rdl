@@ -7,4 +7,6 @@ await db.signin({
   password: Deno.env.get("DB_PASSWORD"),
 });
 
+await db.use("test","test");
+
 export default db;
