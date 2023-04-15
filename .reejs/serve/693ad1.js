@@ -1,0 +1,1 @@
+import e from"./fadc48.js";export default e;
