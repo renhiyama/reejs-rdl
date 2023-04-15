@@ -9,8 +9,6 @@ await db.signin({
   pass: Deno.env.get("DB_PASSWORD"),
 });
 
-console.log("Connected to database");
-
 await db.use("test", "test");
 
 export default db;
