@@ -33,11 +33,11 @@ export default {
 };
 export async function run(c, msg) {
   let type = msg.data.options[0].name;
-  let id = msg.data.options[0]?.options[0]?.value || msg.member.user.id;
+  let id = Object.keys(msg.data.resolved.members)[0] || msg.member.user.id;
   if (type == "bot") {
     let bots = await db.query(`SELECT * FROM bots WHERE botid = $id`, {id});
     let bot = bots[0].result[0];
-    console.log(bot);
+    console.log(bots);
     if (!bot) {
       return c.json({type : 4, data : {content : "Bot not found", flags : 64}});
     }
