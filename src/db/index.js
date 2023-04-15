@@ -4,11 +4,13 @@ console.log(Deno.env.get("DB_URL"), Deno.env.get("DB_USER"), Deno.env.get("DB_PA
 
 const db = new Surreal(Deno.env.get("DB_URL"));
 
-await db.signin({
-  user: Deno.env.get("DB_USER"),
-  password: Deno.env.get("DB_PASSWORD"),
-});
+let user = Deno.env.get("DB_USER");
+let password = Deno.env.get("DB_PASSWORD");
 
-await db.use("test","test");
+await db.signin({ user, password });
+
+console.log("Connected to database");
+
+await db.use("test", "test");
 
 export default db;
