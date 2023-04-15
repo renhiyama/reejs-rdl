@@ -1,4 +1,4 @@
-import {Bots, Servers} from "../../db/index";
+import db from "../../db/index";
 export default {
   name: "info",
   description: "Get info from RDL",
@@ -35,7 +35,8 @@ export async function run(c, msg) {
   let type = msg.data.options[0].name;
   let id = msg.data.options[0]?.options[0]?.value || msg.member.user.id;
   if (type == "bot") {
-    let bot = await Bots.findOne({id});
+    let bots = await db.select("bots");
+    let bot = bots.find(bot => bot.id == id);
     console.log(bot);
     if (!bot) {
       return c.json({type : 4, data : {content : "Bot not found", flags : 64}});

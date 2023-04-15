@@ -1,1 +1,1 @@
-import o from"https://esm.sh/mongoose@7.0.3?bundle";import e from"./7539ba.js";import s from"./bf9c39.js";import t from"./d1066c.js";console.log("uwu",o),await o.connect(Deno.env.get("DB_URL")),console.log("%c[DB] Connected to Database: "+o.connection.readyState,"color: #eb4590");export{e as Bots,s as Servers,t as Users};
+import e from"https://deno.land/x/surrealdb/mod.ts";const n=new e(Deno.env.get("DB_URL"));await n.signin({user:Deno.env.get("DB_USER"),password:Deno.env.get("DB_PASSWORD")});export default n;

@@ -1,1 +1,0 @@
-import o from"https://esm.sh/mongoose@7.0.3?bundle";import e from"./809825.js";import s from"./7f8051.js";import t from"./4300df.js";console.log("uwu",o),await o.connect(Deno.env.get("DB_URL")),console.log("%c[DB] Connected to Database: "+o.connection.readyState,"color: #eb4590");export{e as Bots,s as Servers,t as Users};

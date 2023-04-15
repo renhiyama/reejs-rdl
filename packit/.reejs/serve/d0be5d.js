@@ -1,1 +1,0 @@
-import{CookieDB as o}from"https://deno.land/x/cookie_driver/mod.ts";const e=new o("https://cookiedb.com/api/db",Deno.env.get("COOKIE_DB_TOKEN"));export default e;

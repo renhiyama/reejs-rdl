@@ -15,7 +15,7 @@
     "dotenv": "https://esm.sh/dotenv@16.0.3?bundle",
     "discord-interactions": "https://esm.sh/discord-interactions@3.3.0?bundle",
     "tweetnacl": "https://esm.sh/tweetnacl@1.0.3?bundle",
-	"mongoose": "https://esm.sh/mongoose@7.0.3?bundle"
+    "surrealdb.js": "https://deno.land/x/surrealdb/mod.ts"
   },
   "browserImports": {
     "debug": "https://esm.sh/preact@10.13.2/debug",

@@ -4,10 +4,10 @@
   "type": "module",
   "main": "src/index.js",
   "dependencies": {
-    "reejs": "^0.9.0",
     "@reejs/imports": "^2.0.8",
+    "@reejs/react": "0.9.0",
     "@reejs/server": "^0.9.0",
-    "@reejs/react": "0.9.0"
+    "reejs": "^0.9.0"
   },
   "license": "MIT"
 }
