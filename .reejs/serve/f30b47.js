@@ -1,0 +1,1 @@
+import t from"https://cdn.jsdelivr.net/npm/@twind/with-react/+esm";import i from"./c8b00c.js";export default t(i);

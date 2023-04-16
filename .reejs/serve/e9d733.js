@@ -1,0 +1,1 @@
+import e from"./8b8086.js";import r from"./a9a248.js";export default async function t(t){return t.req.query("register")?(await e(),t.text("Registered Commands")):t.req.query("unregister")?(await r(),t.text("Unregistered Commands")):t.text("No query provided")}
