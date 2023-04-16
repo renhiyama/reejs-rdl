@@ -35,7 +35,7 @@ export async function run(c, msg) {
   let type = msg.data.options[0].name;
   let id = Object.keys(msg.data.resolved.members)[0] || msg.member.user.id;
   if (type == "bot") {
-    let bots = await db.query(`SELECT * FROM bots WHERE botID = '$id'`, {id});
+    let bots = await db.query(`SELECT * FROM bots WHERE botID = "$id"`, {id});
     let bot = bots[0].result[0];
     console.log(bots);
     if (!bot) {
