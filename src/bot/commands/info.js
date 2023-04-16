@@ -34,6 +34,7 @@ export default {
 export async function run(c, msg) {
   let type = msg.data.options[0].name;
   let id = Object.keys(msg.data.resolved.members)[0] || msg.member.user.id;
+  console.log(id);
   if (type == "bot") {
     let bots = await db.query(`SELECT * FROM bots WHERE botid = $id`, {id});
     let bot = bots[0].result[0];
