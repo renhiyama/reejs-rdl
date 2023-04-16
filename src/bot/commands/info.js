@@ -45,33 +45,9 @@ export async function run(c, msg) {
       data: {
         embeds: [{
           title: bot.tag,
-          description: bot.desc,
           color: 0x5865f2,
           thumbnail: { url: bot.avatarURL },
-          fields: [
-            { name: "Prefix", value: bot.prefix || "<Not Disclosed>", inline: true },
-            { name: "Servers", value: bot.servers || "<Not Disclosed>", inline: true },
-            {
-              name: "Owner", value: bot.owners.map(owner => `<@!${owner}>`).join(", "), inline: true
-            }, {
-              name: "Library",
-              value: bot.library || "<Not Disclosed>", inline: true
-            },
-            {
-              name: "Invite",
-              value: `[Click Here for No-Perm Invite](https://discord.com/oauth2/authorize?client_id=${bot.id}&scope=bot&permissions=0)\n[Click Here for Original Invite](${bot.invite})`, inline: true
-            },
-            {
-              name: "Support Server",
-              value: bot.support || "<Not Disclosed>", inline: true
-            },
-            {
-              name: "Vote",
-              value: `[Click Here to Vote - ${bot.opted_coins
-                  ? "Uses R$"
-                  : "Based on Cooldown"}](https://discord.rovelstars.com/bots/${bot.id}/vote)`, inline: true
-            }
-          ]
+          
         }]
       }
     });
