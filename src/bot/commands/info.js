@@ -55,25 +55,25 @@ export async function run(c, msg) {
                     });
 
     if (!bot) {
-      return await fetch(
-          `https://discord.com/api/v10/webhooks/${
-              Deno.env.get(
-                  "DISCORD_CLIENT_ID")}/${msg.token}/messages/@original`,
-          {
-            method : "PATCH",
-            headers : {
-              "Content-Type" : "application/json",
-              "Authorization" : `Bot ${Deno.env.get("DISCORD_TOKEN")}`
-            },
-            body : JSON.stringify({
-              type : 4,
-              data : {
-                content : "Bot not found",
-              }
-            })
-          });
+      await fetch(`https://discord.com/api/v10/webhooks/${
+                      Deno.env.get("DISCORD_CLIENT_ID")}/${
+                      msg.token}/messages/@original`,
+                  {
+                    method : "PATCH",
+                    headers : {
+                      "Content-Type" : "application/json",
+                      "Authorization" : `Bot ${Deno.env.get("DISCORD_TOKEN")}`
+                    },
+                    body : JSON.stringify({
+                      type : 4,
+                      data : {
+                        content : "Bot not found",
+                      }
+                    })
+                  });
+      return;
     }
-    return await fetch(
+    await fetch(
         `https://discord.com/api/v10/webhooks/${
             Deno.env.get("DISCORD_CLIENT_ID")}/${msg.token}/messages/@original`,
         {
@@ -138,7 +138,6 @@ export async function run(c, msg) {
             }
           })
         });
-
   } else if (type == "user") {
     console.log(Users);
     let user = await Users.findOne({id});
