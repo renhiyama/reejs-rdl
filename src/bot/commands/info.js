@@ -55,7 +55,7 @@ export async function run(c, msg) {
               name: "Owner", value: bot.owners.map(owner => `<@!${owner}>`).join(", "), inline: true
             }, {
               name: "Library",
-              value: bot.library || "<Not Disclosed>", inline: true
+              value: bot.lib || "<Not Disclosed>", inline: true
             },
             {
               name: "Invite",
