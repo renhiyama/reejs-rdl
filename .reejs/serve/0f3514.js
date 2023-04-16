@@ -1,2 +1,0 @@
-import React from "https://esm.sh/preact@10.13.2/compat";
-import e from"./1304b6.js";import t from"./7a2854.js";export default function l({children:l,className:r,style:a}){return React.createElement("html",null,React.createElement(e,null),React.createElement(t,{children:l,className:r,style:a}),React.createElement("script",{id:"__reejs"}))}

@@ -1,1 +1,0 @@
-export default{name:"ping",type:1,description:"Ping me"};export async function run(n,t){return n.json({type:4,data:{content:"Pong!"}})}
