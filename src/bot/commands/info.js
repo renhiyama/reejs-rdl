@@ -40,13 +40,13 @@ export async function run(c, msg) {
     if (!bot) {
       return c.json({ type: 4, data: { content: "Bot not found" } });
     }
-    let data = {
+    return c.json({
       type: 4,
       data: {
         embeds: [{
           title: bot.tag,
-          description: bot.desc,
           color: 0x5865f2,
+          url: `https://dscrdly.com/b/${bot.slug}`,
           thumbnail: { url: bot.avatarURL },
           fields: [
             { name: "Prefix", value: bot.prefix || "<Not Disclosed>", inline: true },
@@ -63,7 +63,7 @@ export async function run(c, msg) {
             },
             {
               name: "Support Server",
-              value: bot.support || "<Not Disclosed>", inline: true
+              value: bot.support?`https://discord.gg/${bot.support}` : "<Not Disclosed>", inline: true
             },
             {
               name: "Vote",
@@ -74,17 +74,17 @@ export async function run(c, msg) {
           ]
         }]
       }
-    };
-    let res = await fetch(`https://discord.com/api/v10/interactions/${msg.id}/${msg.token}/callback`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bot ${Deno.env.get("TOKEN")}`
-      },
-      body: JSON.stringify(data)
     });
-    res = await res.json();
-    console.log(res);
+    // let res = await fetch(`https://discord.com/api/v10/interactions/${msg.id}/${msg.token}/callback`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bot ${Deno.env.get("TOKEN")}`
+    //   },
+    //   body: JSON.stringify(data)
+    // });
+    // res = await res.json();
+    // console.log(res);
 
   } else if (type == "user") {
     console.log(Users);
