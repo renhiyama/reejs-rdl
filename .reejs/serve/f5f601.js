@@ -1,0 +1,2 @@
+import React from "https://esm.sh/preact@10.13.2/compat";
+export default function e({children:e,className:t,style:a}){return React.createElement("body",{className:t,style:a},React.createElement("div",{id:"root"},e))}
