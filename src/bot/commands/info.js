@@ -108,34 +108,48 @@ export async function run(c, msg) {
     // console.log(res);
 
   } else if (type == "user") {
-    console.log(Users);
-    let user = await Users.findOne({id});
-    let ownedBots = await Bots.find({owners : {$in : [ id ]}});
-    let ownedBotsString =
-        ownedBots.length ? ownedBots.map(bot => bot.tag).join(", ") : "No Bots";
-    console.log(user);
-    console.log(ownedBots);
+    let type = msg.data.options[0].options[0].name;
+    let id = Object.keys(msg.data.resolved.members)[0] || msg.member.user.id;
+    let users = await db.query(`SELECT * FROM users WHERE userID = $id`, {id});
+    let user = users[0].result[0];
     if (!user) {
-      return c.json(
-          {type : 4, data : {content : "User not found", flags : 64}});
+      return c.json({type : 4, data : {content : "User not found"}});
     }
     return c.json({
       type : 4,
       data : {
         embeds : [ {
           title : user.tag,
-          description : user.bio,
           color : 0x5865f2,
+          url : `https://dscrdly.com/u/${user.userID}`,
           thumbnail : {url : user.avatarURL},
           fields : [
-            {name : "Bots", value : ownedBotsString, inline : true},
-            {name : "Balance", value : `R$ ${user.coins}`, inline : true}, {
-              name : "Recently Voted Bots",
-              value : user.votes.length
-                          ? user.votes.map(bot => `<@!${bot}>`).join(", ")
-                          : "No Bots Voted Recently",
+            {
+              name : "Bio",
+              value : user.bio || "<Not Disclosed>",
               inline : true
-            }
+            },
+            {
+              name : "Recent Voted Bots",
+              value : user.votes.length > 0? user.votes.map(vote => `<@!${vote.bot}> at <t:${
+                Math.round(new Date(vote.at).getTime()/1000)
+              }>`).join(", ") : "<None>",
+              inline : true
+            },
+            {
+              name : "R$ Balance",
+              value : `R$ ${user.bal}`,
+              inline : true
+            },
+            {
+              name : "Account Type",
+              value : user.old ? "This user is requested to login again to move to V2" : "V2",
+              inline : true
+            },
+            {
+              name: "Last Seen",
+              value: `<t:${Math.round(new Date(user.lastLogin).getTime()/1000)}:R>`,
+            },
           ]
         } ]
       }
