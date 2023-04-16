@@ -45,7 +45,6 @@ export async function run(c, msg) {
       data: {
         embeds: [{
           title: bot.tag,
-          color: 0x5865f2,
           thumbnail: { url: bot.avatarURL },
           
         }]
