@@ -19,7 +19,7 @@
     "@discordjs/rest": "https://esm.sh/@discordjs/rest?bundle",
     "@discordjs/formatters": "https://esm.sh/@discordjs/formatters?bundle",
     "@discordjs/builders": "https://esm.sh/@discordjs/builders?bundle",
-    "discord-api-types/v10": "https://esm.sh/discord-api-types@0.37.38/v10"
+    "discord-api-types/v10": "https://esm.sh/discord-api-types@0.37.38/v10?target=es2022"
   },
   "browserImports": {
     "debug": "https://esm.sh/preact@10.13.2/debug",
