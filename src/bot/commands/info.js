@@ -40,16 +40,51 @@ export async function run(c, msg) {
     if (!bot) {
       return c.json({ type: 4, data: { content: "Bot not found" } });
     }
-    return c.json({
+    let data = {
       type: 4,
       data: {
         embeds: [{
           title: bot.tag,
+          description: bot.desc,
+          color: 0x5865f2,
           thumbnail: { url: bot.avatarURL },
-          
+          fields: [
+            { name: "Prefix", value: bot.prefix || "<Not Disclosed>", inline: true },
+            { name: "Servers", value: bot.servers || "<Not Disclosed>", inline: true },
+            {
+              name: "Owner", value: bot.owners.map(owner => `<@!${owner}>`).join(", "), inline: true
+            }, {
+              name: "Library",
+              value: bot.library || "<Not Disclosed>", inline: true
+            },
+            {
+              name: "Invite",
+              value: `[Click Here for No-Perm Invite](https://discord.com/oauth2/authorize?client_id=${bot.id}&scope=bot&permissions=0)\n[Click Here for Original Invite](${bot.invite})`, inline: true
+            },
+            {
+              name: "Support Server",
+              value: bot.support || "<Not Disclosed>", inline: true
+            },
+            {
+              name: "Vote",
+              value: `[Click Here to Vote - ${bot.opted_coins
+                  ? "Uses R$"
+                  : "Based on Cooldown"}](https://discord.rovelstars.com/bots/${bot.id}/vote)`, inline: true
+            }
+          ]
         }]
       }
+    };
+    let res = await fetch(`https://discord.com/api/v10/interactions/${msg.id}/${msg.token}/callback`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bot ${Deno.env.get("TOKEN")}`
+      },
+      body: JSON.stringify(data)
     });
+    res = await res.json();
+    console.log(res);
 
   } else if (type == "user") {
     console.log(Users);
