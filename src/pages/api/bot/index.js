@@ -39,10 +39,11 @@ export default async function Route(c) {
                   "color: #57f287;font-weight: bold;");
       // get index of command
       let index = commands.indexOf(cmd);
-      let res = await runs[index](c, message);
-      let r = res.clone();
-      console.log(await r.json());
-      return res;
+      // get the function to run
+      let run = runs[index];
+      // run the function
+      let response = await run(message);
+      console.log(await response.text());
     } else {
       return c.text('unknown interaction type');
     }

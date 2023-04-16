@@ -25,6 +25,7 @@ let serve_166649js = await Deno.readFile("./.reejs/serve/166649.js");server.app.
 let serve_3348bajs = await Deno.readFile("./.reejs/serve/3348ba.js");server.app.get("/__reejs/serve/3348ba.js", (c)=>{c.header('Content-type','text/javascript');return c.body(serve_3348bajs)});
 let serve_387a65js = await Deno.readFile("./.reejs/serve/387a65.js");server.app.get("/__reejs/serve/387a65.js", (c)=>{c.header('Content-type','text/javascript');return c.body(serve_387a65js)});
 let serve_46c8ecjs = await Deno.readFile("./.reejs/serve/46c8ec.js");server.app.get("/__reejs/serve/46c8ec.js", (c)=>{c.header('Content-type','text/javascript');return c.body(serve_46c8ecjs)});
+let serve_4ed9e2js = await Deno.readFile("./.reejs/serve/4ed9e2.js");server.app.get("/__reejs/serve/4ed9e2.js", (c)=>{c.header('Content-type','text/javascript');return c.body(serve_4ed9e2js)});
 let serve_68fe99js = await Deno.readFile("./.reejs/serve/68fe99.js");server.app.get("/__reejs/serve/68fe99.js", (c)=>{c.header('Content-type','text/javascript');return c.body(serve_68fe99js)});
 let serve_693ad1js = await Deno.readFile("./.reejs/serve/693ad1.js");server.app.get("/__reejs/serve/693ad1.js", (c)=>{c.header('Content-type','text/javascript');return c.body(serve_693ad1js)});
 let serve_6be6cdjs = await Deno.readFile("./.reejs/serve/6be6cd.js");server.app.get("/__reejs/serve/6be6cd.js", (c)=>{c.header('Content-type','text/javascript');return c.body(serve_6be6cdjs)});

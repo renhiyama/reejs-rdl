@@ -15,7 +15,11 @@
     "dotenv": "https://esm.sh/dotenv@16.0.3?bundle",
     "discord-interactions": "https://esm.sh/discord-interactions@3.3.0?bundle",
     "tweetnacl": "https://esm.sh/tweetnacl@1.0.3?bundle",
-    "surrealdb.js": "https://deno.land/x/surrealdb/mod.ts"
+    "surrealdb.js": "https://deno.land/x/surrealdb/mod.ts",
+    "@discordjs/rest": "https://esm.sh/@discordjs/rest?bundle",
+    "@discordjs/formatters": "https://esm.sh/@discordjs/formatters?bundle",
+    "@discordjs/builders": "https://esm.sh/@discordjs/builders?bundle",
+    "discord-api-types": "https://esm.sh/discord-api-types?bundle"
   },
   "browserImports": {
     "debug": "https://esm.sh/preact@10.13.2/debug",

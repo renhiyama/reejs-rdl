@@ -1,14 +1,17 @@
+import {SlashCommandBuilder} from '@discordjs/builders';
+import {Routes} from 'discord-api-types/v10';
+import rest from '../util';
+
 export default {
-  name: "ping",
-  type: 1,
-  description: "Ping me",
-};
-export async function run(c, msg) {
-  let data = {
-    type : 4,
-    data : {
-      content : "Pong!",
-    },
-  };
-  return c.json(data);
+  data: new SlashCommandBuilder().setName("ping").setDescription("Replies with Pong!"),
+  async run(msg){
+    await rest.post(Routes.interactionCallback(msg.id, msg.token), {
+      body: {
+        type: 4,
+        data: {
+          content: "Pong!"
+        }
+      }
+    });
+  }
 }
