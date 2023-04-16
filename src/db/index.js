@@ -1,7 +1,5 @@
 import Surreal from "surrealdb.js";
 
-console.log(Deno.env.get("DB_URL"), Deno.env.get("DB_USER"), Deno.env.get("DB_PASSWORD"));
-
 const db = new Surreal(Deno.env.get("DB_URL"));
 
 await db.signin({
