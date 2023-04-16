@@ -34,13 +34,12 @@ export default {
 export async function run(c, msg) {
   let type = msg.data.options[0].name;
   let id = Object.keys(msg.data.resolved.members)[0] || msg.member.user.id;
-  console.log(id);
   if (type == "bot") {
-    let bots = await db.query(`SELECT * FROM bots WHERE botid = '$id'`, {id});
+    let bots = await db.query(`SELECT * FROM bots WHERE botID = '$id'`, {id});
     let bot = bots[0].result[0];
     console.log(bots);
     if (!bot) {
-      return c.json({type : 4, data : {content : "Bot not found", flags : 64}});
+      return c.json({type : 4, data : {content : "Bot not found"}});
     }
     return c.json({
       type : 4,
