@@ -1,1 +1,0 @@
-import{REST as e}from"https://esm.sh/@discordjs/rest?bundle";const o=new e({version:"10"}).setToken(Deno.env.get("DISCORD_TOKEN"));export default o;
