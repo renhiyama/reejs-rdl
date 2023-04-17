@@ -18,8 +18,7 @@
     "surrealdb.js": "https://deno.land/x/surrealdb/mod.ts",
     "@discordjs/rest": "https://cdn.skypack.dev/@discordjs/rest?dts&min",
     "@discordjs/formatters": "https://cdn.skypack.dev/@discordjs/formatters?dts&min",
-    "@discordjs/builders": "https://cdn.skypack.dev/@discordjs/builders?dts&min",
-    "discord-api-types/v10": "https://cdn.skypack.dev/discord-api-types?dts&min"
+    "@discordjs/builders": "https://cdn.skypack.dev/@discordjs/builders?dts&min"
   },
   "browserImports": {
     "debug": "https://esm.sh/preact@10.13.2/debug",
