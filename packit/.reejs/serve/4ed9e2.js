@@ -1,1 +1,1 @@
-import{REST as e}from"https://cdn.skypack.dev/@discordjs/rest?dts&min";const o=new e({version:"10"}).setToken(Deno.env.get("DISCORD_TOKEN"));export default o;
+import{REST as e}from"https://cdn.skypack.dev/@discordjs/rest?dts";const o=new e({version:"10"}).setToken(Deno.env.get("DISCORD_TOKEN"));export default o;

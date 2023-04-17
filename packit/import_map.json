@@ -16,9 +16,9 @@
     "discord-interactions": "https://esm.sh/discord-interactions@3.3.0?bundle",
     "tweetnacl": "https://esm.sh/tweetnacl@1.0.3?bundle",
     "surrealdb.js": "https://deno.land/x/surrealdb/mod.ts",
-    "@discordjs/rest": "https://cdn.skypack.dev/@discordjs/rest?dts&min",
-    "@discordjs/formatters": "https://cdn.skypack.dev/@discordjs/formatters?dts&min",
-    "@discordjs/builders": "https://cdn.skypack.dev/@discordjs/builders?dts&min",
+    "@discordjs/rest": "https://cdn.skypack.dev/@discordjs/rest?dts",
+    "@discordjs/formatters": "https://cdn.skypack.dev/@discordjs/formatters?dts",
+    "@discordjs/builders": "https://cdn.skypack.dev/@discordjs/builders?dts",
     "discord-api-types/v10": "https://deno.land/x/discord_api_types/v10.ts"
   },
   "browserImports": {
