@@ -1,1 +1,1 @@
-import{REST as e}from"https://esm.sh/@discordjs/rest";const o=new e({version:"10"}).setToken(Deno.env.get("DISCORD_TOKEN"));export default o;
+import{REST}from"https://esm.sh/@discordjs/rest";const rest=new REST({version:"10"}).setToken(Deno.env.get("DISCORD_TOKEN"));export default rest;

@@ -3,6 +3,7 @@
     "hono": "https://esm.sh/hono@3.0.3?bundle",
     "@hono/node-server": "https://esm.sh/@hono/node-server@0.5.0?bundle",
     "react": "https://esm.sh/preact@10.13.2/compat",
+    "preact": "https://esm.sh/preact@10.13.2/compat",
     "render": "https://esm.sh/preact-render-to-string@6.0.2",
     "@hono/serve-static": "https://esm.sh/@hono/node-server@0.3.0/serve-static?bundle",
     "debug": "https://esm.sh/preact@10.13.2/debug",
@@ -24,6 +25,7 @@
   "browserImports": {
     "debug": "https://esm.sh/preact@10.13.2/debug",
     "react": "https://esm.sh/preact@10.13.2/compat",
+    "preact": "https://esm.sh/preact@10.13.2/compat",
     "@twind/core": "https://cdn.jsdelivr.net/npm/@twind/core/+esm",
     "@twind/preset-autoprefix": "https://cdn.jsdelivr.net/npm/@twind/preset-autoprefix/+esm",
     "@twind/preset-tailwind": "https://cdn.jsdelivr.net/npm/@twind/preset-tailwind/+esm",

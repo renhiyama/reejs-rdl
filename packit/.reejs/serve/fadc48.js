@@ -1,2 +1,2 @@
 import React from "https://esm.sh/preact@10.13.2/compat";
-import e from"./00dbcd.js";import t from"./dd79e4.js";export default function l({children:l,className:r,style:a}){return React.createElement("html",null,React.createElement(e,null),React.createElement(t,{children:l,className:r,style:a}),React.createElement("script",{id:"__reejs"}))}
+import Header from"./00dbcd.js";import Body from"./dd79e4.js";export default function App({children:children,className:className,style:style}){return React.createElement("html",null,React.createElement(Header,null),React.createElement(Body,{children:children,className:className,style:style}),React.createElement("script",{id:"__reejs"}))}

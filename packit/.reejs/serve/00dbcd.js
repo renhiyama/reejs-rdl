@@ -1,2 +1,2 @@
 import React from "https://esm.sh/preact@10.13.2/compat";
-export default function e({children:e}){return React.createElement("head",null,React.createElement("meta",{charset:"utf-8"}),React.createElement("meta",{name:"viewport",content:"width=device-width, initial-scale=1"}),e)}
+export default function Header({children:children}){return React.createElement("head",null,React.createElement("meta",{charset:"utf-8"}),React.createElement("meta",{name:"viewport",content:"width=device-width, initial-scale=1"}),children)}

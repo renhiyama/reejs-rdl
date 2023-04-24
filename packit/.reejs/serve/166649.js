@@ -1,1 +1,1 @@
-export const method="POST";export default async function t(t){try{let o=await t.req.body();JSON.parse(o)}catch(t){console.log(t)}}
+export const method="POST";export default async function Route(c){try{let body=await c.req.body();JSON.parse(body)}catch(e){console.log(e)}}
